@@ -3,88 +3,47 @@
 class Lingkaran
 {
     const PHI = 3.14;
-    public $jari_jari;
 
-    public function __construct($jari_jari)
-    {
-        $this->jari_jari = $jari_jari;
+    public function luas($jari_jari) : float {
+        return self::PHI*$jari_jari*$jari_jari;
     }
 
-    public function luas() : float {
-        return self::PHI * $this->jari_jari * $this->jari_jari;
-    }
-
-    public function keliling() : float {
-        return 2 * self::PHI * $this->jari_jari;
+    public function keliling($jari_jari) : float {
+        return 2*self::PHI*$jari_jari;
     }
 }
 
 class Bola
 {
     const PHI = 3.14;
-    public $jari_jari;
-
-    public function __construct($jari_jari)
-    {
-        $this->jari_jari = $jari_jari;
-    }
-
-    public function volume() : float {
-        return (4/3) * self::PHI * pow($this->jari_jari, 3);
+    public function volume($jari_jari) : float {
+        return (4/3)*self::PHI*pow($jari_jari,3);
     }
 }
 
 class Tabung
 {
     const PHI = 3.14;
-    public $jari_jari;
-    public $tinggi;
-
-    public function __construct($jari_jari, $tinggi)
-    {
-        $this->jari_jari = $jari_jari;
-        $this->tinggi = $tinggi;
-    }
-
-    public function volume() : float {
-        return self::PHI * pow($this->jari_jari, 2) * $this->tinggi;
+    public function volume($jari_jari,$tinggi) : float {
+        return self::PHI*pow($jari_jari,2)*$tinggi;
     }
 }
 
 class Kerucut
 {
     const PHI = 3.14;
-    public $jari_jari;
-    public $tinggi;
-
-    public function __construct($jari_jari, $tinggi)
-    {
-        $this->jari_jari = $jari_jari;
-        $this->tinggi = $tinggi;
-    }
-
-    public function volume() : float {
-        return (1/3) * self::PHI * pow($this->jari_jari, 2) * $this->tinggi;
+    public function volume($jari_jari,$tinggi) : float {
+        return (1/3)*self::PHI*pow($jari_jari,2)*$tinggi;
     }
 }
 
-// 1. Membuat object nasi_tumpeng (Kerucut)
-$nasi_tumpeng = new Kerucut(4, 10);
-echo "Volume nasi tumpeng: " . number_format($nasi_tumpeng->volume(), 2) . " cm³\n";
+// Membuat objek nasi_tumpeng dari class Kerucut
+$nasi_tumpeng = new Kerucut();
 
-// 2. Membuat object dari class Lingkaran
-$lingkaran = new Lingkaran(5);
-echo "Luas lingkaran: " . number_format($lingkaran->luas(), 2) . " cm²\n";
-echo "Keliling lingkaran: " . number_format($lingkaran->keliling(), 2) . " cm\n";
+// Menghitung volume nasi_tumpeng
+$jari_jari = 4; // cm
+$tinggi = 10; // cm
+$volume = $nasi_tumpeng->volume($jari_jari, $tinggi);
 
-// 3. Implementasi untuk Bola
-$bola = new Bola(3);
-echo "Volume bola: " . number_format($bola->volume(), 2) . " cm³\n";
-
-// 3. Implementasi untuk Tabung
-$tabung = new Tabung(4, 8);
-echo "Volume tabung: " . number_format($tabung->volume(), 2) . " cm³\n";
-
-// 3. Implementasi untuk Kerucut (sudah ada di poin 1, tapi ditambahkan lagi untuk kelengkapan)
-$kerucut = new Kerucut(3, 7);
-echo "Volume kerucut: " . number_format($kerucut->volume(), 2) . " cm³\n";
+// Menampilkan hasil
+echo "Volume nasi tumpeng dengan jari-jari {$jari_jari} cm dan tinggi {$tinggi} cm adalah: " . number_format($volume, 2) . " cm³";
