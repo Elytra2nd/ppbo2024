@@ -1,4 +1,8 @@
 <?php
 
-echo "halo imam firdaus";
+$nama = readline('Masukkan nama Anda: ');
+echo "Halo {$nama}";
+
+echo "halo M. imam firdaus";
+
 
