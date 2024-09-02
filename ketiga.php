@@ -1,49 +1,98 @@
 <?php
+class Penulis {
+    public $nama;
+    public $deskripsi;
 
-class Lingkaran
-{
-    const PHI = 3.14;
-
-    public function luas($jari_jari) : float {
-        return self::PHI*$jari_jari*$jari_jari;
+    public function __construct($nama, $deskripsi) {
+        $this->nama = $nama;
+        $this->deskripsi = $deskripsi;
     }
 
-    public function keliling($jari_jari) : float {
-        return 2*self::PHI*$jari_jari;
-    }
-}
-
-class Bola
-{
-    const PHI = 3.14;
-    public function volume($jari_jari) : float {
-        return (4/3)*self::PHI*pow($jari_jari,3);
+    public function tampilkan($tipe) {
+        if ($tipe === 'nama') {
+            return $this->nama;
+        } elseif ($tipe === 'deskripsi') {
+            return $this->deskripsi;
+        }
+        return [];
     }
 }
 
-class Tabung
-{
-    const PHI = 3.14;
-    public function volume($jari_jari,$tinggi) : float {
-        return self::PHI*pow($jari_jari,2)*$tinggi;
+class Buku {
+    public $ISBN;
+    public $judul;
+    public $deskripsi;
+    public $kategori;
+    public $bahasa;
+    public $jumlahHalaman;
+    public $penulis;
+    public $penerbit;
+
+    public function __construct($ISBN, $judul, $deskripsi, $kategori, $bahasa, $jumlahHalaman, $penulis, $penerbit) {
+        $this->ISBN = $ISBN;
+        $this->judul = $judul;
+        $this->deskripsi = $deskripsi;
+        $this->kategori = $kategori;
+        $this->bahasa = $bahasa;
+        $this->jumlahHalaman = $jumlahHalaman;
+        $this->penulis = $penulis;
+        $this->penerbit = $penerbit;
+    }
+
+    public function tampilkanSemua() {
+        return [
+            'ISBN' => $this->ISBN,
+            'Judul' => $this->judul,
+            'Deskripsi' => $this->deskripsi,
+            'Kategori' => $this->kategori,
+            'Bahasa' => $this->bahasa,
+            'Jumlah Halaman' => $this->jumlahHalaman,
+            'Penulis' => $this->penulis,
+            'Penerbit' => $this->penerbit
+        ];
+    }
+
+    public function detail($ISBN) {
+        if ($this->ISBN == $ISBN) {
+            return $this->tampilkanSemua();
+        }
+        return [];
     }
 }
 
-class Kerucut
-{
-    const PHI = 3.14;
-    public function volume($jari_jari,$tinggi) : float {
-        return (1/3)*self::PHI*pow($jari_jari,2)*$tinggi;
+class Penerbit {
+    public $nama;
+    public $alamat;
+    private $telepon;
+
+    public function __construct($nama, $alamat, $telepon) {
+        $this->nama = $nama;
+        $this->alamat = $alamat;
+        $this->telepon = $telepon;
+    }
+
+    public function setTelepon($telepon) {
+        $this->telepon = $telepon;
+    }
+
+    public function getTelepon() {
+        return $this->telepon;
     }
 }
 
-// Membuat objek nasi_tumpeng dari class Kerucut
-$nasi_tumpeng = new Kerucut();
+// Contoh penggunaan:
+$penulis = new Penulis('J.K. Rowling', 'Penulis asal Inggris, terkenal dengan seri Harry Potter.');
+$penerbit = new Penerbit('Bloomsbury', '50 Bedford Square, London', '02076316500');
+$buku = new Buku(9780747532743, 'Harry Potter dan Batu Bertuah', 'Novel fantasi', 'Fiksi', 'Bahasa Inggris', 223, $penulis->tampilkan('nama'), $penerbit->nama);
 
-// Menghitung volume nasi_tumpeng
-$jari_jari = 4; // cm
-$tinggi = 10; // cm
-$volume = $nasi_tumpeng->volume($jari_jari, $tinggi);
+$dataBuku = $buku->tampilkanSemua();
 
-// Menampilkan hasil
-echo "Volume nasi tumpeng dengan jari-jari {$jari_jari} cm dan tinggi {$tinggi} cm adalah: " . number_format($volume, 2) . " cm³";
+echo "ISBN: " . $dataBuku['ISBN'] . "\n";
+echo "Judul: " . $dataBuku['Judul'] . "\n";
+echo "Deskripsi: " . $dataBuku['Deskripsi'] . "\n";
+echo "Kategori: " . $dataBuku['Kategori'] . "\n";
+echo "Bahasa: " . $dataBuku['Bahasa'] . "\n";
+echo "Jumlah Halaman: " . $dataBuku['Jumlah Halaman'] . "\n";
+echo "Penulis: " . $dataBuku['Penulis'] . "\n";
+echo "Penerbit: " . $dataBuku['Penerbit'] . "\n";
+?>
