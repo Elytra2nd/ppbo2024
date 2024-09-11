@@ -19,5 +19,3 @@ class Penerbit {
         return $this->telepon;
     }
 }
-
-$penerbit = new Penerbit('Bloomsbury', '50 Bedford Square, London', '02076316500');

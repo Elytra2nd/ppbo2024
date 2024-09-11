@@ -18,5 +18,3 @@ class Penulis {
         return [];
     }
 }
-
-$penulis = new Penulis('J.K. Rowling', 'Penulis asal Inggris, terkenal dengan seri Harry Potter.');

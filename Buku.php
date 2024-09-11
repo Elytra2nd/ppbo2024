@@ -41,16 +41,3 @@ class Buku {
         return [];
     }
 }
-
-$buku = new Buku(9780747532743, 'Harry Potter dan Batu Bertuah', 'Novel fantasi', 'Fiksi', 'Bahasa Inggris', 223, $penulis->tampilkan('nama'), $penerbit->nama);
-$dataBuku = $buku->tampilkanSemua();
-
-echo "ISBN: " . $dataBuku['ISBN'] . "\n";
-echo "Judul: " . $dataBuku['Judul'] . "\n";
-echo "Deskripsi: " . $dataBuku['Deskripsi'] . "\n";
-echo "Kategori: " . $dataBuku['Kategori'] . "\n";
-echo "Bahasa: " . $dataBuku['Bahasa'] . "\n";
-echo "Jumlah Halaman: " . $dataBuku['Jumlah Halaman'] . "\n";
-echo "Penulis: " . $dataBuku['Penulis'] . "\n";
-echo "Penerbit: " . $dataBuku['Penerbit'] . "\n";
-?>
