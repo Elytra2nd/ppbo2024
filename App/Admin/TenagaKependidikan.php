@@ -4,7 +4,7 @@ namespace App\Admin;
 
 class TenagaKependidikan extends Pegawai
 {
-    private int $gaji_pokok;
+    public int $gaji_pokok;
 
     public function cuti(): void
     {
