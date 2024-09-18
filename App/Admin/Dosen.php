@@ -4,7 +4,7 @@ namespace App\Admin;
 
 class Dosen extends Pegawai
 {
-    private string $nidn;
+    public string $nidn;
 
     public function mengajar(): void
     {
