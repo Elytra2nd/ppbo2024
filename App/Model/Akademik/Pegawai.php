@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Admin;
+namespace App\Model\Akademik;
 
 class Pegawai
 {
@@ -9,35 +9,34 @@ class Pegawai
     protected int $no_hp;
     public string $alamat;
 
-    public function setNama(string $nama): void
-    {
-        $this->nama = $nama;
-    }
-
-    public function getNama(): string
-    {
-        return $this->nama;
-    }
-
-    public function setNip(int $nip): void
+    public function __construct(int $nip, string $nama, string $no_hp, string $alamat)
     {
         $this->nip = $nip;
-    }
-
-    public function setNoHp(int $no_hp): void
-    {
+        $this->nama = $nama;
         $this->no_hp = $no_hp;
+        $this->alamat = $alamat;
     }
 
-    public function getNoHp(): int
+    public function cekIn(): bool
+    {
+        echo $this->nama . " berhasil cek in";
+        return true;
+    }
+
+    public function cekOut(): bool
+    {
+        echo $this->nama . " berhasil cek out";
+        return true;
+    }
+
+    protected function getNoHp(): string
     {
         return $this->no_hp;
     }
 
-    public function setAlamat(string $alamat): void
+    public function setNoHp(string $no_hp): void
     {
-        $this->alamat = $alamat;
+        $this->no_hp = $no_hp;
     }
-
 
 }

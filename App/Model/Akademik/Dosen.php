@@ -1,23 +1,26 @@
 <?php
 
-namespace App\Admin;
+namespace App\Model\Akademik;
+
+use App\Model\Akademik\Pegawai;
 
 class Dosen extends Pegawai
 {
-    public string $nidn;
+    private string $nidn;
 
-    public function mengajar(): void
+    public function __construct(int $nip, string $nama, int $no_hp, string $alamat, string $nidn)
     {
-        echo "{$this->getNama()} sedang mengajar perkuliahan";
+        parent::__construct($nip, $nama, $no_hp, $alamat);
+        $this->nidn = $nidn;
     }
 
-    public function setNidn(string $nidn): void
+    public function setNidn(int $nidn): void
     {
         $this->nidn = $nidn;
     }
 
-    public function getNidn(): string
+    public function mengajar(): void
     {
-        return $this->nidn;
+        echo $this->nama . " sedang mengajar perkuliahan";
     }
 }
