@@ -9,7 +9,7 @@ class Pegawai
     protected int $no_hp;
     public string $alamat;
 
-    public function __construct(int $nip, string $nama, string $no_hp, string $alamat)
+    public function __construct(int $nip, string $nama, int $no_hp, string $alamat)
     {
         $this->nip = $nip;
         $this->nama = $nama;
@@ -29,12 +29,12 @@ class Pegawai
         return true;
     }
 
-    protected function getNoHp(): string
+    protected function getNoHp(): int
     {
         return $this->no_hp;
     }
 
-    public function setNoHp(string $no_hp): void
+    public function setNoHp(int $no_hp): void
     {
         $this->no_hp = $no_hp;
     }
